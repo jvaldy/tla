@@ -1,0 +1,63 @@
+{% extends "/layout/master.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <!-- Titre principal -->
+    <div class="row m-1">
+        <div class="col-12">
+            <h4 class="main-title"><i class="ph-duotone  ph-house-line"></i> - Accueil</h4>
+        </div>
+    </div>
+
+
+    <div class="card-body">
+   
+        <div class="faq-header">
+            <img src="{{asset('../assets/images/logo/logo.png')}}" class="img-fluid" alt="">
+            <h2 class="text-dark f-w-700">BIENVENUE SUR TLA !</h2>
+            <p class="mb-2 text-dark f-w-700 container text-center">
+                Traqueur de Légendes Apex est une plateforme dédiée aux passionnés d'Apex Legends, offrant des outils de suivi et des informations actualisées pour améliorer l'expérience de jeu. En plus de fournir les dernières actualités et la rotation des cartes, TLA inclut un traqueur de joueur complet, permettant de consulter des informations telles que le statut en jeu, le classement en mode classé, la légende actuellement utilisée, ainsi que d'autres données clés. Fiable et intuitif, TLA répond aux besoins de la communauté en facilitant l’accès aux statistiques et aux informations essentielles du jeu.
+            </p>   
+        </div>
+        
+        {# <div class="app-divider-v mb-2"></div> #}
+
+    <!-- Section des actualités -->
+    <div class="row blog-section">
+
+        <h5 class="mb-3 text-dark f-w-600">3 Dernières actus</h5>
+
+        {% for article in latestNews %}
+            <div class="col-md-6 col-lg-4 col-xxl-4">
+                <div class="card blog-card overflow-hidden b-b-4-primary">
+                    <a href="{{ article.link }}" class="glightbox" data-glightbox="type: image; zoomable: true;">
+                        <img src="{{ article.img }}" class="card-img-top" alt="{{ article.title }}">
+                    </a>
+                    <div class="tag-container">
+                        <span class="badge text-light-secondary">Dernière Actu</span>
+                    </div>
+
+                    <div class="card-body">
+                        <a href="{{ article.link }}" class="bloglink" target="_blank">
+                            <h5 class="title-text mb-2">{{ article.title }}</h5>
+                        </a>
+                        <p class="card-text text-secondary">
+                            {{ article.short_desc }}
+                        </p>
+                        <div class="d-flex justify-content-end mt-3">
+                            <a href="{{ path('news') }}" class="btn btn-primary">Toutes les actus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <p class="text-center text-warning">Aucune actualité disponible pour le moment.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

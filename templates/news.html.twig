@@ -1,0 +1,60 @@
+{% extends "/layout/master.html.twig" %}
+
+{% block title %}Actualités Apex Legends{% endblock %}
+
+{% block css %}
+<!-- Ajoutez ici vos styles CSS personnalisés si nécessaire -->
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <!-- Titre principal -->
+    <div class="row m-1">
+        <div class="col-12">
+            <h4 class="main-title"><i class="ph-duotone  ph-megaphone-simple"></i> - ACTUALITES</h4>
+            <span class="badge text-bg-light">Un doute ? Voir <a href="https://www.ea.com/fr-fr/games/apex-legends/news" target="_blank" role="button" class="link-primary">le Site officiel EA.com</a></span><br><br>
+        </div>
+    </div>
+
+    <!-- Section des actualités -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card equal-card">
+                <div class="card-body">
+                    <ul class="app-timeline-box">
+                        {% for article in news %}
+                            <li class="timeline-section">
+                                <div class="timeline-icon">
+                                    <span class="text-light-primary h-35 w-35 d-flex-center b-r-50">
+                                        <i class="ti ti-circle-check f-s-20"></i>
+                                    </span>
+                                </div>
+                                <div class="timeline-content bg-light-primary b-1-primary">
+                                    <div class="d-flex justify-content-between align-items-center timeline-flex">
+                                        <h6 class="mt-2 text-primary">{{ article.title }}</h6>
+                                    </div>
+                                    <p class="mt-2 text-dark">
+                                        <img src="{{ article.img }}" alt="{{ article.title }}" style="width: 100%; height: auto; margin-bottom: 10px;">
+                                        {{ article.short_desc }}
+                                        <a href="{{ article.link }}" class="text-primary" target="_blank">[Lire plus]</a>
+                                    </p>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="timeline-section">
+                                <div class="timeline-content bg-light-warning b-1-warning">
+                                    <p class="mt-2 text-dark">Aucune actualité disponible pour le moment.</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Ajoutez ici vos scripts JavaScript personnalisés si nécessaire -->
+{% endblock %}

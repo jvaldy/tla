@@ -1,0 +1,63 @@
+{% extends "/layout/master.html.twig" %}
+
+{% block title %}Nombre de Prédateur{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <!-- Titre principal -->
+    <div class="row m-1">
+        <div class="col-12">
+            <h4 class="main-title"><i class="ph-duotone  ph-alien"></i> - Predator</h4>
+            <span class="badge text-bg-light">Brrh... je ne sais pas ce que je cherche ici...</span><br><br>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+            {% if predatorData is empty %}
+                <p>Aucune donnée disponible.</p>
+            {% else %}
+                {% for platform, data in predatorData %}
+                    {% for rank, details in data %}
+                        <div class="col-md-12 col-lg-6">
+                            <div class="card vertical-blog mb-3 hover-effect overflow-hidden">
+                                <div class="row g-0">
+                                    
+                                    <div class="col-sm-12">
+                                        <div class="card-body create-ticket-card">
+                                            <h5 class="title-text mb-3 bloglink">Platforme : 
+                                                {# {{ rank }} #}
+                                            
+                                                {% if rank == 'PS4' %}
+                                                    Playstation
+                                                {% elseif rank == 'X1' %}
+                                                    Xbox
+                                                {% else %}
+                                                    {{ rank | capitalize }}
+                                                {% endif %}
+                                            
+                                            </h5>
+                                            <p class="card-text text-secondary">
+                                                Minimum de points : {{ details.val }}
+                                            </p>
+                                            <p class="card-text text-secondary">
+                                                Dernière MAJ : {{ details.updateTimestamp|date_modify("+1 hour")|date("d/m/Y H:i") }}
+                                            </p>
+                                            <p class="card-text text-secondary">
+                                                Total de Masters : {{ details.totalMastersAndPreds }} 
+                                                <br><i>Les 750 premiers joueurs sont prédateurs.</i>
+                                            </p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

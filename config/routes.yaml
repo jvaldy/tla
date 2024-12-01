@@ -1,0 +1,42 @@
+# controllers:
+#     resource:
+#         path: ../src/Controller/
+#         namespace: App\Controller
+#     type: attribute
+
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+# Route pour afficher les actualités
+news:
+    path: /news
+    controller: App\Controller\NewsController::index
+
+maps:
+    path: /maps
+    controller: App\Controller\MapController::index
+
+licence:
+    path: /licence
+    controller: App\Controller\LicenceController::index
+
+predator:
+    path: /predator
+    controller: App\Controller\PredatorController::index
+
+server:
+    path: /server
+    controller: App\Controller\ServerController::index
+
+tracker:
+    path: /tracker
+    controller: App\Controller\TrackerController::index
+
+tracker-dl-pdf:
+    path: /tracker-dl-pdf
+    controller: App\Controller\TrackerController::downloadPdf
+
+
+
+

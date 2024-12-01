@@ -1,0 +1,180 @@
+{% extends "/layout/master.html.twig" %}
+{% block title %}Licence{% endblock %}
+
+{% block css %}
+<!-- Ajoutez ici vos styles CSS personnalisés si nécessaire -->
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <!-- Titre principal -->
+    <div class="faq-heading mb-3">
+                <h4 class="main-title"><i class="ti ti-certificate"></i> Licence et Informations</h4>
+                <span class="badge text-bg-light">Ow... ta présence ici me réchauffe le coeur...</span><br><br>
+              </div>
+    {# <div class="row m-1">
+        <div class="col-12">
+            <h4 class="main-title"><i class="ti ti-certificate"></i> Licence et Informations</h4>
+        </div>
+    </div> #}
+
+    <!-- Section Licence avec accordéon -->
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 mb-3">
+            <div class="accordion app-accordion accordion-primary" id="licenseAccordion">
+
+
+
+                <!-- Section : Support au créateur -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#supportCreator" aria-expanded="true" aria-controls="supportCreator">
+                            <i class="ti ti-heart pe-2"></i> Soutenir le créateur du site
+                        </button>
+                    </h2>
+                    <div id="supportCreator" class="accordion-collapse collapse show" data-bs-parent="#licenseAccordion">
+                        <div class="accordion-body">
+                            L'API utilisée par l'outil TLA est fournie gratuitement, et TLA est lui-même mis à disposition des utilisateurs sans frais. Pour les plus généreux d'entre vous, il est possible d'apporter un soutien volontaire via un don sur PayPal. Chaque contribution, aussi modeste soit-elle, contribue directement aux frais d'hébergement, à l'entretien de l'outil et au développement de nouvelles fonctionnalités. 
+
+                            <p>Pour effectuer un don : 
+                                <a href="https://paypal.me/JohnValdy" target="_blank" class="text-primary"><i class="ti ti-paypal pe-2"></i><i class="ph-bold  ph-paypal-logo"></i> - PayPal</a>
+                            </p>
+
+                            <p>Retrouvez également le créateur de TLA sur ses réseaux sociaux :</p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="https://www.tiktok.com/@2acrazy_tk" target="_blank" class="text-primary">
+                                        <i class="ph-fill  ph-tiktok-logo"></i> - TikTok
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.twitch.tv/2acrazy" target="_blank" class="text-primary">
+                                        <i class="ph-fill  ph-twitch-logo"></i> - Twitch
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.instagram.com/john.valdy/" target="_blank" class="text-primary">
+                                        <i class="ph-fill  ph-instagram-logo"></i> - Instagram
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://discord.gg/A7G3PfcP8B" target="_blank" class="text-primary">
+                                        <i class="ph-duotone  ph-discord-logo"></i> - M2 Gameurs 
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://www.linkedin.com/in/john-valdy-boungou/" target="_blank" class="text-primary">
+                                        <i class="ph-fill  ph-linkedin-logo"></i> - LinkedIn
+                                    </a>
+                                </li>
+                                
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <!-- Section : Origine des données -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dataOrigin" aria-expanded="false" aria-controls="dataOrigin">
+                            <i class="ti ti-database pe-2"></i> Origine des données
+                        </button>
+                    </h2>
+                    <div id="dataOrigin" class="accordion-collapse collapse" data-bs-parent="#licenseAccordion">
+                        <div class="accordion-body">
+                            Les données exploitées par l'outil TLA proviennent de source fiable, notamment l'<a href="https://apexlegendsapi.com/" target="_blank">API Apex Legends</a>. Ces informations sont régulièrement actualisées afin d'assurer une expérience utilisateur fluide et de haute précision.
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Section : Utilisation des données -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dataUsage" aria-expanded="false" aria-controls="dataUsage">
+                            <i class="ti ti-share pe-2"></i> Utilisation et destination des données
+                        </button>
+                    </h2>
+                    <div id="dataUsage" class="accordion-collapse collapse" data-bs-parent="#licenseAccordion">
+                        <div class="accordion-body">
+                            Les informations saisies dans l'outil TLA ne sont pas conservées dans une base de données. Les messages envoyés au support sont directement transmis par e-mail au créateur du site, garantissant ainsi que les données ne sont ni stockées ni conservées. De même, les données saisies dans le tracker sont uniquement utilisées pour fournir des résultats en temps réel et ne sont pas enregistrées.
+                        </div>
+                    </div>
+                </div>
+
+
+
+                
+
+
+                <!-- Section : Public cible -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#targetAudience" aria-expanded="false" aria-controls="targetAudience">
+                            <i class="ti ti-users pe-2"></i> Public cible de l'outil TLA
+                        </button>
+                    </h2>
+                    <div id="targetAudience" class="accordion-collapse collapse" data-bs-parent="#licenseAccordion">
+                        <div class="accordion-body">
+                            L'outil TLA s'adresse à tous les passionnés d’Apex Legends, qu'ils soient joueurs ou simples spectateurs des dernières actualités. Que vous souhaitiez suivre vos propres performances, obtenir des informations pour une personnalité, ou encore effectuer des recherches pour un proche, TLA vous offre les outils nécessaires pour explorer et analyser toutes les données clés de l’univers Apex Legends.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Section : Fonctionnalités de TLA -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#featuresTLA" aria-expanded="false" aria-controls="featuresTLA">
+                            <i class="ti ti-tools pe-2"></i> Fonctionnalités de l'outil TLA
+                        </button>
+                    </h2>
+                    <div id="featuresTLA" class="accordion-collapse collapse" data-bs-parent="#licenseAccordion">
+                        <div class="accordion-body">
+                            TLA offre une variété de fonctionnalités, notamment l'accès à des informations en temps réel, des analyses détaillées, et des outils de suivi pour optimiser votre expérience utilisateur. Nos fonctionnalités sont conçues pour répondre aux besoins des utilisateurs modernes et s'adaptent constamment aux évolutions du jeu.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#partnersSection" aria-expanded="false" aria-controls="partnersSection">
+                            <i class="ti ti-heart-handshake pe-2"></i> Collaborateurs
+                        </button>
+                    </h2>
+                    <div id="partnersSection" class="accordion-collapse collapse" data-bs-parent="#licenseAccordion">
+                        <div class="accordion-body">
+                            TLA bénéficie du soutien de plusieurs partenaires clés qui contribuent à la qualité et à la stabilité de nos services. Nous collaborons avec eux pour garantir la fiabilité des données et l'excellence de l'expérience utilisateur.
+
+                            <div class="row mt-3">
+                                <!-- Exemple de logo pour un partenaire -->
+                                <div class="col-6 col-md-4 mb-3">
+                                    <img src="{{asset('../assets/images/logo/logo.png')}}" class="img-fluid" alt="Partenaire 1">
+                                </div>
+                                <div class="col-6 col-md-4 mb-3">
+                                    <img src="{{asset('../assets/images/logo/apex legends status.png')}}" class="img-fluid" alt="Partenaire 2">
+                                </div>
+                                <div class="col-6 col-md-4 mb-3">
+                                    <img src="{{asset('../assets/images/logo/meduse.png')}}" class="img-fluid" alt="Partenaire 3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Custom Scripts -->
+<div id="customizer"></div>
+{% endblock %}

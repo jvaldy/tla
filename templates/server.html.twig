@@ -1,0 +1,56 @@
+{% extends "/layout/master.html.twig" %}
+
+{% block title %}Serveur Status{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row m-1">
+        <div class="col-12">
+            <h4 class="main-title"><i class="ph-bold  ph-pulse"></i> - État des Serveurs</h4>
+            <span class="badge text-bg-light">Tu t'es perdu BG <i class="fa-solid fa-beer fa-fw"></i></span><br><br>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+            {% if serverStatus is empty %}
+                <p>Aucune donnée disponible.</p>
+            {% else %}
+                {% for service, regions in serverStatus %}
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    
+                                        <i class="bg-primary h-40 w-40 b-r-15 f-s-18 ph-bold  ph-pulse"></i>
+                                      {{ service | replace({'_': ' '}) | capitalize }}
+                                </h5>
+                                <ul class="list-unstyled">
+                                    {% for region, details in regions %}
+                                        <li>
+                                            <i class="ph-duotone  ph-computer-tower"></i> <i class="ti ti-arrow-badge-right"></i>
+                                            <strong>{{ region | replace({'-': ' '}) | capitalize }}</strong> :
+                                            {% if details.Status == "UP" %}
+                                                <span class="badge bg-success-subtle bg-success f-s-10 text-uppercase">En ligne</span>
+                                            {% elseif details.Status == "SLOW" %}
+                                                <span class="badge bg-warning-subtle bg-warning f-s-10 text-uppercase">Lent</span>
+                                            {% else %}
+                                                <span class="badge bg-danger-subtle bg-danger f-s-10 text-uppercase">Hors ligne</span>
+                                            {% endif %} <br>
+                                            {% if details.ResponseTime is defined %}
+                                                Temps de réponse : {{ details.ResponseTime }} ms
+                                            {% endif %}
+                                            | Code HTTP : {{ details.HTTPCode | default('N/A') }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

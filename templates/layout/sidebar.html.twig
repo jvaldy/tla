@@ -1,0 +1,44 @@
+<!-- Menu Navigation starts -->
+<nav>
+    <div class="app-logo">
+
+        <span class="bg-light-primary toggle-semi-nav">
+          <i class="ti ti-chevrons-right f-s-20"></i>
+        </span>
+    </div>
+    <div class="app-nav" id="app-simple-bar">
+        <ul class="main-nav p-0 mt-2">
+            <li class="menu-title logo-menu">
+                <a class="logo d-inline-block" href="{{ path('home') }}">
+                    <img src="{{asset('../assets/images/logo/logo.png')}}" class="img-fluid" alt="logo-tla">
+                </a>                
+            </li>
+            <li>
+                <a class="show" data-bs-toggle="collapse" href="#tools" aria-expanded="true">
+                    <i class="ph-duotone  ph-stack"></i>
+                    
+                    TLA (Outils)
+                </a>
+                <ul class="collapse show" id="tools" aria-expanded="true" style="">
+                <ul>
+                    <li><a href="{{ path('home') }}"><i class="ph-duotone  ph-house-line"></i> - ACCUEIL</a></li>
+                    <li><a href="{{ path('news') }}"><i class="ph-duotone  ph-megaphone-simple"></i> - ACTUALITES</a></li>
+                    <li><a href="{{ path('tracker') }}"><i class="ph-fill  ph-dog"></i> - TRAQUEUR</a></li>
+                    <li><a href="{{ path('maps') }}"><i class="ph-duotone  ph-globe-hemisphere-east"></i> - CARTES</a></li>
+                    <li><a href="{{ path('predator') }}"><i class="ph-duotone  ph-alien"></i> - PREDATEUR</a></li>
+                    <li><a href="{{ path('server') }}"><i class="ph-bold  ph-pulse"></i> - SERVEURS</a></li>
+                    <li><a href="{{ path('licence') }}"><i class="ph-duotone  ph-certificate"></i> - LICENCES</a></li>
+                </ul>
+            </li>         
+
+
+        </ul>
+    </div>
+
+    <div class="menu-navs">
+        <span class="menu-previous"><i class="ti ti-chevron-left"></i></span>
+        <span class="menu-next"><i class="ti ti-chevron-right"></i></span>
+    </div>
+
+</nav>
+<!-- Menu Navigation ends -->

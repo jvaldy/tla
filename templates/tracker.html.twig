@@ -1,0 +1,225 @@
+{% extends "/layout/master.html.twig" %}
+
+{% block title %}Traqueur de Légendes Apex{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h4 class="main-title"><i class="ph-duotone ph-house-line"></i> - Traqueur de Légendes Apex</h4>
+    <span class="badge text-bg-light">Aucune réponse ? utilisateur introuvable.</span><br><br>
+    {# <p>Bonjour {{ app.user.username if app.user else 'visiteur' }} !</p> #}
+
+    {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card b-b-4-primary">
+                    <div class="card-header ticket-details-profile"><h5>Trouvons le !</h5></div>
+                    <div class="card-body">
+                        {{ form_row(form.pseudo) }}
+                        {# {{ form_row(form.platform) }} #}
+                        <span class="badge text-bg-light">Testez avec 2aCrazy sur PC ^^</span>
+
+                        <br><br>
+
+                        <div class="radio-options d-flex gap-3">
+                            {% for choice in form.platform %}
+                                <label class="btn btn-primary">
+                                    {{ form_widget(choice) }}
+                                    {% if choice.vars.value == 'PC' %}
+                                        <i class="fas fa-laptop"></i> <!-- Icône pour PC -->
+                                    {% elseif choice.vars.value == 'PS4' %}
+                                        <i class="fab fa-playstation"></i> <!-- Icône pour PlayStation -->
+                                    {% elseif choice.vars.value == 'X1' %}
+                                        <i class="fab fa-xbox"></i> <!-- Icône pour Xbox -->
+                                    {% endif %}
+                                </label>
+                            {% endfor %}
+                        </div>
+
+                        
+                        <br>
+
+                        <div class="text-center">
+                            {{ form_row(form.submit) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            {% if playerData %}
+            <div class="col-lg-4 col-xxl-4">
+
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        <div class="card b-b-4-primary setting-profile-tab">
+                            <div class="card-header ticket-details-profile">
+                                <h5>Carte Joueur</h5>
+                            </div>
+                            <div class="card-body ticket-details-profile">
+                                <div class="card team-box-card hover-effect overflow-hidden">
+                                    <div class="team-box">
+                                        <img 
+                                            src="{{ playerData.legends.selected.ImgAssets.banner }}" 
+                                            alt="Icône de légende" 
+                                            class="card-img-top" 
+                                            onerror="this.src='{{asset('../assets/images/logo/introuvable.jpeg')}}';"
+                                        >
+                                    </div>
+                                    <div class="team-container">
+                                        <div class="team-pic">
+                                            <span class="bg-secondary h-80 w-80 d-flex-center b-r-50 position-relative overflow-hidden">
+                                                {# <img src="{{ playerData.legends.selected.ImgAssets.icon }}" alt="" class="img-legend"> #}
+                                                <img 
+                                                    src="{{ playerData.legends.selected.ImgAssets.icon }}" 
+                                                    alt="Icône de légende" 
+                                                    class="img-legend" 
+                                                    onerror="this.src='{{asset('../assets/images/logo/icon-introuvable.jpeg')}}';"
+                                                >
+                                                {# {% if playerData.legends.selected.ImgAssets.icon %}
+                                                    <img src="{{ playerData.legends.selected.ImgAssets.icon }}" alt="Icône de légende" class="img-legend">
+                                                {% else %}
+                                                    <img src="{{ asset('../assets/images/logo/logo.png') }}" alt="Icône par défaut" class="img-legend">
+                                                {% endif %} #}
+                                                {# {% set icon = playerData.legends.selected.ImgAssets.icon ?? asset('../assets/images/logo/logo.png') %}
+                                                    <img src="{{ icon }}" alt="Icône de légende" class="img-legend"> #}
+
+
+                                            </span>
+                                            
+
+                                        </div>
+                                    </div>
+                                    <div class="taem-content">
+                                        <div class="mb-3 mt-3">
+                                            <h5>{{ playerData.global.name }}</h5>
+                                            <p>UID : {{ playerData.global.uid }}</p>
+                                            <p><i class="ti ti-tag"></i> : {{ playerData.global.tag }}</p>
+                                            <p><i class="ti ti-select"></i> : {{ playerData.legends.selected.LegendName }}</p>
+
+                                        </div>
+                                        <div class="team-details">
+                                            <div class="taem-contentbox">
+                                                <p class="f-w-500"><a href="./project_app.html">En ligne</a></p>
+                                                <p class="text-center">{{ playerData.realtime.isOnline ? 'Oui' : 'Non' }}</p>
+                                            </div>
+                                            <div class="taem-contentbox">
+                                                <p class="f-w-500"><a href="./to_do.html">Niveau</a></p>
+                                                <p class="text-center">{{ playerData.global.level }}</p>
+                                            </div>
+                                            <div class="taem-contentbox">
+                                                <p class="f-w-500"><a href="#">Joueur</a></p>
+                                                <p class="text-center">{% if playerData.global.platform == 'PS4' %}
+                                                        PS
+                                                    {% else %}
+                                                        {{ playerData.global.platform }}
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <p class="team-content-list text-muted mb-3">
+                                                <p class="f-w-500"><a href="#">Prochain niveau</a></p>
+                                                <div class="progress w-100 mt-3 mb-3" role="progressbar" aria-valuenow="{{ playerData.global.toNextLevelPercent }}" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-primary progress-bar-striped" style="width: {{ playerData.global.toNextLevelPercent }}%;">
+                                                        {{ playerData.global.toNextLevelPercent }}%
+                                                    </div>
+                                                </div>
+                                            </p>
+
+                                        </div>
+                                            
+                                    </div>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <a href="{{ path('tracker-dl-pdf', { pseudo: playerData.global.name, platform: playerData.global.platform }) }}" class="btn btn-primary">
+                                        <i class="fas fa-download"></i> Télécharger en PDF
+                                    </a>
+                                </div>
+                            </div>
+                            
+
+
+                        </div>
+                    </div>
+                    
+                                                                            
+                </div>
+            </div>
+            
+
+            
+
+
+
+
+            <div class="col-lg-4 col-xxl-4">
+                <div class="card b-b-4-primary">
+                    <div class="card-header ticket-details-profile">
+                        <h5>Encore +</h5>
+                    </div>
+                    <div class="card-body create-ticket-card">
+                        <div class="about-list">
+
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-baby-bottle"></i> Nouveau joueur</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.mozambiquehere_internal.isNewToDB ? 'Oui' : 'Non' }}</span>
+                            </div>
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-palette"></i> Skin</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.legends.selected.gameInfo.skin ?? 'Inconnu' }}</span>
+                            </div>
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-ban"></i> Ban</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.global.bans.isActive ? 'Oui' : 'Non' }}</span>
+                            </div>
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-power"></i> En jeu</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.realtime.isInGame ? 'Oui' : 'Non' }}</span>
+                            </div>
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-users"></i> Team Full</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.realtime.canJoin ? 'Oui' : 'Non' }}</span>
+                            </div>
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-door-enter"></i> Rejoindre</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.realtime.lobbyState == 'invite' ? 'Invitation' : 'Ouvert' }}</span>
+                            </div>
+
+                            <div class="app-divider-v dashed mt-4 mb-4"></div>     
+                                                   
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-trophy"></i> Rang</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.global.rank.rankName }} {{ playerData.global.rank.rankDiv }}</span>
+                            </div>
+                            <div>
+                                <span class="fw-medium"><i class="ti ti-star"></i> Points</span>
+                                <span class="float-end f-s-13 text-secondary">{{ playerData.global.rank.rankScore }}</span>
+                            </div>
+                            
+                            <div class="text-center mt-2">
+                                <img src="{{ playerData.global.rank.rankImg }}" alt="Rang BR" class="img-fluid">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+    {{ form_end(form) }}
+
+
+
+</div>
+{% endblock %}

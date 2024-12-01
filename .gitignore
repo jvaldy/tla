@@ -1,0 +1,12 @@
+/vendor/
+/var/
+/.env
+.env.local
+/.idea/
+/node_modules/
+/public/bundles/
+/config/secrets/
+/tests/
+/.symfony/
+/.phpunit.result.cache
+.DS_Store

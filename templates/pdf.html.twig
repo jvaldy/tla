@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Traqueur de Légendes Apex</title>
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/styles.css')) }}">
+    <style>
+        /* Styles adaptés au PDF */
+        .container-fluid {
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+        }
+        .card-header {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .img-fluid {
+            max-width: 100px;
+            height: auto;
+        }
+        .progress-bar {
+            width: {{ playerData.global.toNextLevelPercent }}%;
+            background-color: #007bff;
+            height: 10px;
+        }
+        .text-center { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid ticket-details-profile">
+        <h2>Traqueur de Légendes Apex</h2>
+        
+        <div class="card">
+            
+            <div class="card-body">
+                {# <img src="{{ absolute_url(asset(playerData.legends.selected.ImgAssets.banner)) }}" alt="Banner" class="img-fluid"> #}
+                {# <img src="{{ playerData.legends.selected.ImgAssets.banner }}" class="card-img-top" alt="..."> #}
+
+                <p><strong>Nom : </strong>{{ playerData.global.name }}</p>
+                <p><strong>UID : </strong>{{ playerData.global.uid }}</p>
+                <p><strong>Tag : </strong>{{ playerData.global.tag }}</p>
+                <p><strong>Joueur : </strong>{{ playerData.global.platform }}</p>
+                <p><strong>Légende (Nom) : </strong>{{ playerData.legends.selected.LegendName }}</p>
+                <p><strong>Légende (Skin) : </strong>{{ playerData.legends.selected.gameInfo.skin ?? 'Inconnu' }}</p>
+                <p><strong>Légende (Icon) : </strong><a href="{{ playerData.legends.selected.ImgAssets.banner }}" target="_blank" role="button" class="btn btn-primary w-100">Icone de la légende</a></p>
+                <p><strong>Légende (Bannière) : </strong><a href="{{ playerData.legends.selected.ImgAssets.banner }}" target="_blank" role="button" class="btn btn-primary w-100">Bannière de la légende</a></p>
+                <p><strong>Niveau : </strong>{{ playerData.global.level }} ({{ playerData.global.toNextLevelPercent }}% vers le prochain niveau)</p>
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            
+            <div class="card-body">
+                <p><strong>En ligne : </strong>{{ playerData.realtime.isOnline ? 'Oui' : 'Non' }}</p>
+                <p><strong>En jeu : </strong>{{ playerData.realtime.isInGame ? 'Oui' : 'Non' }}</p>
+                <p><strong>Team full : </strong>{{ playerData.realtime.canJoin ? 'Oui' : 'Non' }}</p>
+                <p><strong>Rejoindre : </strong>{{ playerData.realtime.lobbyState == 'invite' ? 'Invitation' : 'Ouvert' }}</p>
+                <p><strong>Nouveau joueur : </strong>{{ playerData.mozambiquehere_internal.isNewToDB ? 'Oui' : 'Non' }}</p>
+                <p><strong>Ban : </strong>{{ playerData.global.bans.isActive ? 'Oui' : 'Non' }}</p>
+                <p><strong>Classement (Rang) : </strong>{{ playerData.global.rank.rankName }} {{ playerData.global.rank.rankDiv }}</p>
+                <p><strong>Classement (Points) : </strong>{{ playerData.global.rank.rankScore }}</p>
+                <p><strong>Classement (Badge) : </strong><a href="{{ playerData.global.rank.rankImg }}" target="_blank" role="button" class="btn btn-primary w-100">Badge</a></p>
+            </div>
+        </div>
+
+        
+                <p><i>Ce document a été généré automatiquement sur Traqueur de Légendes Apex (TLA).
+        Les informations contenues dans ce fichier sont obtenues en temps réel depuis des sources fiables pour garantir leur exactitude.
+        Pour plus de détails ou pour vérifier les mises à jour, visitez notre plateforme à tout moment.</i></p>
+            <a href="https://tla.jtools.fr" target="_blank" role="button" class="btn btn-primary w-100">Découvrir TLA</a>
+           
+
+    </div>
+</body>
+</html>
